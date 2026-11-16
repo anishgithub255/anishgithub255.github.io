@@ -1,1019 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anish Sunil - Personal Portfolio</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anish Sunil - Personal Portfolio</title>
+<link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070d;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.09);--bd:rgba(255,255,255,.1);--tx:#f3f3fa;--mu:#9a9ab5;--a:#8b5cf6;--b:#22d3ee;--c:#f472b6;--g:linear-gradient(120deg,var(--a),var(--b),var(--c));color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f4f4fb;--s1:rgba(255,255,255,.7);--s2:rgba(255,255,255,.95);--bd:rgba(20,20,60,.1);--tx:#15152b;--mu:#5d5d7a;color-scheme:light}}
+:root[data-theme="dark"]{color-scheme:dark}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:400 15px/1.7 Poppins,system-ui,sans-serif;min-height:100%;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit;text-decoration:none}ul,ol{list-style:none}
+svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg i{position:absolute;width:48vmax;height:48vmax;border-radius:50%;filter:blur(90px);opacity:.35;animation:fl 18s ease-in-out infinite alternate}
+.bg i:nth-child(1){background:var(--a);top:-15%;left:-10%}.bg i:nth-child(2){background:var(--b);bottom:-20%;right:-10%;animation-delay:-6s}.bg i:nth-child(3){background:var(--c);top:35%;left:40%;opacity:.18;animation-delay:-11s}
+@keyframes fl{to{transform:translate(8vmax,6vmax) scale(1.2)}}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(139,92,246,.22),transparent 65%);transform:translate(var(--x,-500px),var(--y,-500px)) translate(-50%,-50%)}
+main{max-width:1200px;margin:0 auto;padding:20px;display:grid;gap:20px;grid-template-columns:300px 1fr;align-items:start}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:24px;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.sidebar{padding:28px 22px;position:sticky;top:20px;text-align:center;animation:up .9s both}
+.avatar{width:110px;height:110px;margin:0 auto 16px;border-radius:50%;padding:3px;background:var(--g);background-size:300%;animation:sh 6s linear infinite;position:relative}
+.avatar>span{position:absolute;inset:3px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-weight:600;font-size:30px}
+.avatar img{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);border-radius:50%;object-fit:cover;background:var(--bg)}
+@keyframes sh{to{background-position:300% 0}}
+.name{font-size:24px;font-weight:600;background:var(--g);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 8s linear infinite}
+.title{color:var(--mu);font-size:13px;display:inline-block;margin-top:6px;padding:3px 14px;border-radius:99px;background:var(--s2)}
+.title:after{content:"";display:inline-block;width:2px;height:1em;background:var(--b);margin-left:3px;vertical-align:-2px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.more-btn{display:none;margin:18px auto 0;gap:6px;align-items:center;color:var(--b);font-size:13px}
+.more{margin-top:20px}.sep{height:1px;background:var(--bd);margin:18px 0}
+.contacts{display:grid;gap:16px;text-align:left}
+.contact{display:flex;gap:12px;align-items:center}
+.ib{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--s2);color:var(--b);border:1px solid var(--bd);flex:none}
+.ct{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em}
+.contact a,.contact time,.contact address{font-size:13px;font-style:normal;word-break:break-all}.contact a:hover{color:var(--b)}
+.social{display:flex;gap:10px;justify-content:center}
+.social a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--s2);border:1px solid var(--bd);transition:.3s}
+.social a:hover{background:var(--g);transform:translateY(-5px) rotate(8deg);border-color:transparent}
+.content{min-width:0}
+nav{position:sticky;top:calc(12px + env(safe-area-inset-top,0px));z-index:20;margin-bottom:20px;padding:6px;display:flex;justify-content:flex-end;animation:up .9s .1s both}
+nav ul{display:flex;gap:4px;position:relative;overflow-x:auto;max-width:100%}
+.nl{padding:9px 18px;border-radius:99px;color:var(--mu);font-size:14px;transition:.3s;position:relative;z-index:1;white-space:nowrap}
+.nl:hover{color:var(--tx)}.nl.active{color:#fff;background:var(--g);background-size:200%;animation:sh 6s linear infinite;box-shadow:0 6px 22px rgba(139,92,246,.45)}
+article{display:none;padding:34px}article.active{display:block}
+article.active>*,article.active .stag>*{animation:up .7s both}
+article.active>*:nth-child(2){animation-delay:.1s}article.active>*:nth-child(3){animation-delay:.2s}article.active>*:nth-child(4){animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(30px);filter:blur(6px)}}
+h2.t{font-size:32px;font-weight:600;margin-bottom:22px;position:relative;padding-bottom:12px}
+h2.t:after{content:"";position:absolute;left:0;bottom:0;height:4px;width:60px;border-radius:4px;background:var(--g)}
+h3.h3{font-size:22px;font-weight:500;margin:34px 0 18px}
+.about-text p{color:var(--mu);margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{padding:22px;border-radius:20px;background:var(--s1);border:1px solid var(--bd);transition:transform .25s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+.item:before{content:"";position:absolute;inset:0;background:radial-gradient(250px circle at var(--mx,50%) var(--my,0%),rgba(139,92,246,.22),transparent 70%);opacity:0;transition:.3s}
+.item:hover{border-color:rgba(139,92,246,.5);box-shadow:0 18px 40px -18px rgba(139,92,246,.6)}.item:hover:before{opacity:1}
+.item>*{position:relative}
+.svc{display:flex;gap:16px}.svc img{width:40px;height:40px}.svc h4{font-weight:500;font-size:17px}.svc p{color:var(--mu);font-size:13.5px;margin-top:4px}
+.svc .ph{width:52px;height:52px;border-radius:14px;background:var(--s2);border:1px solid var(--bd);display:grid;place-items:center;font-size:0;flex:none}
+.svc .ph img{display:block;width:30px;height:30px;object-fit:contain}
+.tlist{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.tlist .item{min-width:min(340px,85%);scroll-snap-align:start;cursor:pointer}
+.tav{width:56px;height:56px;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:600;margin-bottom:10px;overflow:hidden;position:relative}
+.tav img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.item h4.tn{font-weight:500}.ttxt{color:var(--mu);font-size:13.5px;margin-top:6px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;visibility:hidden;opacity:0;transition:.35s}
+.modal.on{visibility:visible;opacity:1}.ov{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.mbox{position:relative;max-width:560px;width:100%;padding:34px;background:var(--bg);transform:scale(.85) translateY(30px);transition:.45s cubic-bezier(.2,1.3,.4,1)}
+.modal.on .mbox{transform:none}.mbox time{color:var(--mu);font-size:13px}.mbox p{color:var(--mu);margin-top:12px}
+.x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--s2);display:grid;place-items:center}.x:hover{background:var(--c)}
+.mav{width:72px;height:72px;margin-bottom:12px}
+.tl-head{display:flex;gap:12px;align-items:center;margin:8px 0 22px}
+.tl-head h3{margin:0}
+.tl{border-left:2px solid var(--bd);margin-left:20px;padding-left:28px;display:grid;gap:22px}
+.tl li{position:relative}.tl li:before{content:"";position:absolute;left:-37px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--g);box-shadow:0 0 0 5px rgba(139,92,246,.2);animation:pu 2.4s infinite}
+@keyframes pu{50%{box-shadow:0 0 0 10px rgba(139,92,246,0)}}
+.tl h4{font-weight:500;font-size:17px}.tl span{color:var(--b);font-size:13px}.tl p{color:var(--mu);font-size:14px;margin-top:6px}.tl b{color:var(--tx);font-weight:500}
+.skills{display:grid;gap:22px;padding:26px}
+.sk>div:first-child{display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px}.sk h5{font-weight:500;font-size:14px}
+.bar{height:9px;border-radius:9px;background:var(--s2);overflow:hidden}
+.fill{height:100%;width:0;border-radius:9px;background:var(--g);background-size:200%;animation:sh 4s linear infinite;transition:width 1.6s cubic-bezier(.2,.9,.2,1)}
+.filters{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.filters button{padding:8px 20px;border-radius:99px;background:var(--s1);border:1px solid var(--bd);color:var(--mu);font-size:14px;transition:.3s}
+.filters button.active,.filters button:hover{background:var(--g);color:#fff;border-color:transparent}
+.sel{display:none;position:relative;margin-bottom:20px}
+.sel>button{width:100%;padding:12px 18px;border-radius:14px;background:var(--s1);border:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center}
+.sel ul{position:absolute;top:110%;left:0;right:0;z-index:5;padding:8px;border-radius:14px;background:var(--bg);border:1px solid var(--bd);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s}
+.sel ul.on{opacity:1;visibility:visible;transform:none}.sel ul button{width:100%;text-align:left;padding:8px 12px;border-radius:8px;color:var(--mu)}.sel ul button:hover{background:var(--s2);color:var(--tx)}
+.plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.plist li.hide{display:none}.plist li{animation:pop .5s both}@keyframes pop{from{opacity:0;transform:scale(.85)}}
+.img{aspect-ratio:16/10;border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;font-weight:600;font-size:32px;color:rgba(255,255,255,.85)}
+.img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.plist a:hover .img img{transform:scale(1.12)}
+.eye{position:absolute;z-index:2;inset:0;display:grid;place-items:center;background:rgba(7,7,13,.55);opacity:0;transition:.3s}.eye svg{width:36px;height:36px;transform:scale(.5);transition:.3s}
+.plist a:hover .eye{opacity:1}.plist a:hover .eye svg{transform:scale(1)}
+.pt{margin-top:12px;font-weight:500}.pc{color:var(--mu);font-size:13px}
+.blist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.blist .item{padding:0}.blist .img{border-radius:0;aspect-ratio:16/9;font-size:22px}
+.bc{padding:18px}.bm{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mu)}.bm .cat{color:var(--b)}.dot{width:4px;height:4px;border-radius:50%;background:var(--mu)}
+.bc h3{font-size:17px;font-weight:500;margin:8px 0}.bc p{color:var(--mu);font-size:13.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blist a:hover h3{color:var(--b)}
+.map{border-radius:20px;overflow:hidden;border:1px solid var(--bd);height:260px;margin-bottom:10px}.map iframe{width:100%;height:100%;filter:invert(.9) hue-rotate(180deg) saturate(.8)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .map iframe{filter:none}}
+.form{display:grid;gap:14px}.iw{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fi{width:100%;padding:14px 18px;border-radius:14px;background:var(--s1);border:1px solid var(--bd);color:var(--tx);font:inherit;outline:0;transition:.3s}
+.fi:focus{border-color:var(--a);box-shadow:0 0 0 4px rgba(139,92,246,.2)}textarea.fi{min-height:130px;resize:vertical}
+.fb{justify-self:end;display:flex;gap:10px;align-items:center;padding:13px 26px;border-radius:99px;background:var(--g);background-size:200%;color:#fff;font-weight:500;transition:.3s;box-shadow:0 10px 28px -8px rgba(139,92,246,.7)}
+.fb:hover{transform:translateY(-3px);background-position:100% 0}.fb:hover svg{transform:translate(4px,-4px) rotate(10deg)}.fb svg{transition:.3s}
+.tilt{transform:perspective(800px) rotateX(var(--rx,0)) rotateY(var(--ry,0))}
+@media (max-width:900px){main{grid-template-columns:1fr;padding:12px}.sidebar{position:static;padding:20px}.sidebar-info{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-align:left}.avatar{width:72px;height:72px;margin:0}.avatar>span{font-size:20px}.more-btn{display:flex;margin:0}.name{font-size:20px}.more{display:none}.more.on{display:block;animation:up .5s both}nav{justify-content:center}article{padding:22px}}
+@media (max-width:560px){.grid2,.iw{grid-template-columns:1fr}.sel{display:block}.filters{display:none}h2.t{font-size:26px}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
 </head>
-
 <body>
-
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Anish Sunil" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Anish Sunil">Anish Sunil</h1>
-
-          <p class="title">Software developer</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:anishsunil2001@gmail.com" class="contact-link">anishsunil2001@gmail.com</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+971-528849568" class="contact-link">+971-528849568</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="2001-05-22">May 22, 2001</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>DUBAI, UAE</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.facebook.com/profile.php?id=100006371506689" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://x.com/shSl32033075" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.instagram.com/a_ni_s_h_/" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            I'm a Developer from Dubai working in fullstack development and Software Development.
-            I enjoy
-            turning complex problems into simple, beautiful and intuitive designs.
-          </p>
-
-          <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I am a passionate Software Engineer currently working at FACTS Company, Dubai, 
-            where I focus on ERP development and implementation using MSSQL, T-SQL, API integration, and SQL.
-          </p>
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web design</h4>
-
-                <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
-
-                <p class="service-item-text">
-                  High-quality development of sites at the professional level.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">MS SQL</h4>
-
-                <p class="service-item-text">
-                  Proficient in MS SQL for developing backend application and integration using API.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Photography</h4>
-
-                <p class="service-item-text">
-                  I make high-quality photos of any category at a professional level.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials
-        -->
-
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Suji Kumar" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Suji Kumar</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Anish was hired to create a corporate identity. We were very pleased with the work done. He has a
-                    lot of experience
-                    and is very concerned about the needs of client.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Akhila Manu" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Akhila Manu</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Anish's ability to grasp complex concepts and apply them effectively is remarkable. His contributions during his internship at Oasis Infobyte, particularly in web development, showcased his technical proficiency and dedication. Anish is a true asset to any team. 
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Shammy Kumar" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Shammy Kumar</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Anish Sunil has demonstrated exceptional talent and commitment in all his projects. His strong educational background, combined with practical experience, makes him a well-rounded professional. Anish is always eager to learn and excel.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Sunish Sunil</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Anish is a highly skilled and dedicated individual. His proficiency in software development and web technologies like HTML, CSS, and JavaScript is impressive. Anish consistently delivers high-quality work and brings a positive attitude to the team.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2024-06-14">14 June, 2024</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Amrita Viswa Vidyapeetham, Kochi Campus</h4>
-
-              <span>2022 — 2024</span>
-
-              <p class="timeline-text">
-                Done my <b>Masters of Computer Application </b> from Amrita Viswa Vidyapeetam with a CGPA of 7.69/10
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">University of Kerala, 
-               IHRD College of Applied Science</h4>
-
-              <span>2019 — 2022</span>
-
-              <p class="timeline-text">
-                Done my <b>Bachelors of Computer Application </b> from University of kerala with a CGPA of 7.5/10
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Kerala State Board Of Secondary Education (STD XII)
-                </h4>
-
-              <span>2017 — 2019</span>
-
-              <p class="timeline-text">
-                Done my <b>Higher Secondary Education</b> from Kerala State syllabus with a percenatge of 82%
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Indian Certificate of Secondary Education
-                Examinations (STD X)</h4>
-
-              <span>2017</span>
-
-              <p class="timeline-text">
-                Done my <b>Secondary Education</b> from ICSE Syllabus with a percentage of 78%
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Software Developer</h4>
-
-              <span>10/09/2025 - Present</span>
-
-              <p class="timeline-text">
-                Developing user friendly, customized ERP software at <b>FACTS</b> from September 10th 2025, I gained valuable experience in software development, sql, api integration and machine research modeling. 
-Skills gained: SQL, Fullstack development, JavaScript, Python, TSQL, React, Angular.
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Angular</h5>
-                <data value="56">56%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 56%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">JavaScript</h5>
-                <data value="50">50%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">MS SQL</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Python</h5>
-                <data value="85">85%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 85%;"></div>
-              </div>
-
-            </li>
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">AI Integration</h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      <article class="portfolio" data-page="portfolio">
-
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-1.png" alt="Amigos GYM" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Amigos GYM</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="Flavours Unleashed" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Flavours Unleashed</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.png" alt="EEZY" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">EEZY</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="https://careerfoundry.com/en/blog/web-development/how-i-found-my-way-into-coding/">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Terver Aosu" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">May 14, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Terver Aosu</h3>
-
-                  <p class="blog-text">
-                    Meet the mentors, How I found my way into coding
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://www.designity.com/blog/the-best-fonts-for-designers#:~:text=Manrope%20%E2%80%94%20Simple%20and%20readable.,matter%20the%20distance%20or%20size.">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Jan 5, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    In the world of design, every line and curve plays a crucial role in the look and feel of your final result and that extends to the fonts you use.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Angular v18" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Development</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">May 23, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Angular V18 is now available!</h3>
-
-                  <p class="blog-text">
-                    Today we are excited to share the next milestone in the evolution of Angular! Over the past three releases we’ve introduced a lot of new features and improvements.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://openai.com/index/hello-gpt-4o/">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="Hello GPT-4o" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2024-05-13">May 13, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Hello GPT-4o</h3>
-
-                  <p class="blog-text">
-                    We’re announcing GPT-4o, our new flagship model that can reason across audio, vision, and text in real time.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://www.uipath.com/blog/ai/understanding-context-grounding">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="Why context is the key to better generative AI" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2024-05-6">May 6, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Why context is the key to better generative AI</h3>
-
-                  <p class="blog-text">
-                    GenAI tools are powered by foundational AI models like large language models (LLMs). 
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://www.artificial-intelligence.blog/ai-news/e-commerce-video-mockups-with-hedra">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="E-Commerce Video Mockups with Hedra" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Feb 19, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">E-Commerce Video Mockups with Hedra</h3>
-
-                  <p class="blog-text">
-                    In the ever-evolving landscape of e-commerce, staying ahead of the curve often means adopting the latest technologies to engage and attract customers. One such innovation making waves in the industry is the use of generative video AI models. 
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-<section class="mapbox" data-mapbox>
-  <figure>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14454.551470315414!2d55.2707826!3d25.2048493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f434c1c5b2e6b%3A0x9c4c8f4f1f4cc7d1!2sDubai%2C%20United%20Arab%20Emirates!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-      width="400" height="300" loading="lazy"
-      style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </figure>
-</section>
-
-
-
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-        
-          <form action="mailto:anishsunil2001@gmail.com" method="post" enctype="text/plain" class="form" data-form>
-        
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-        
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-        
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-        
-            <button class="form-btn" type="submit">
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-        
-          </form>
-        
-        </section>
-        
-
-      </article>
-
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
+<symbol id="loc" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="fb" viewBox="0 0 24 24"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5v4h3v7h4v-7h3l1-4h-4V7.5c0-.3.2-.5.5-.5H15z"/></symbol>
+<symbol id="tw" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4 4 20"/></symbol>
+<symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+<symbol id="book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+<symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+</defs></svg>
+<div class="bg"><i></i><i></i><i></i></div><div class="glow" id="glow"></div>
+
+<main>
+<aside class="sidebar card" data-sidebar>
+  <div class="sidebar-info">
+    <figure class="avatar"><span>AS</span><img src="./assets/images/my-avatar.png" alt="Anish Sunil" width="80" onerror="this.remove()"></figure>
+    <div class="info-content">
+      <h1 class="name" title="Anish Sunil">Anish Sunil</h1>
+      <p class="title" id="typed" data-text="Software developer">Software developer</p>
     </div>
+    <button class="more-btn" data-sidebar-btn><span>Show Contacts</span><svg class="i"><use href="#chev"/></svg></button>
+  </div>
+  <div class="more" data-more>
+    <div class="sep"></div>
+    <ul class="contacts">
+      <li class="contact"><div class="ib"><svg class="i"><use href="#mail"/></svg></div><div><p class="ct">Email</p><a href="mailto:anishsunil2001@gmail.com">anishsunil2001@gmail.com</a></div></li>
+      <li class="contact"><div class="ib"><svg class="i"><use href="#phone"/></svg></div><div><p class="ct">Phone</p><a href="tel:+971-528849568">+971-528849568</a></div></li>
+      <li class="contact"><div class="ib"><svg class="i"><use href="#cal"/></svg></div><div><p class="ct">Birthday</p><time datetime="2001-05-22">May 22, 2001</time></div></li>
+      <li class="contact"><div class="ib"><svg class="i"><use href="#loc"/></svg></div><div><p class="ct">Location</p><address>DUBAI, UAE</address></div></li>
+    </ul>
+    <div class="sep"></div>
+    <ul class="social">
+      <li><a href="https://www.facebook.com/profile.php?id=100006371506689" aria-label="Facebook"><svg class="i"><use href="#fb"/></svg></a></li>
+      <li><a href="https://x.com/shSl32033075" aria-label="Twitter"><svg class="i"><use href="#tw"/></svg></a></li>
+      <li><a href="https://www.instagram.com/a_ni_s_h_/" aria-label="Instagram"><svg class="i"><use href="#ig"/></svg></a></li>
+    </ul>
+  </div>
+</aside>
 
-  </main>
+<div class="content">
+<nav class="card"><ul>
+  <li><button class="nl active" data-nav-link>About</button></li>
+  <li><button class="nl" data-nav-link>Resume</button></li>
+  <li><button class="nl" data-nav-link>Portfolio</button></li>
+  <li><button class="nl" data-nav-link>Blog</button></li>
+  <li><button class="nl" data-nav-link>Contact</button></li>
+</ul></nav>
 
+<article class="card active" data-page="about">
+  <header><h2 class="t">About me</h2></header>
+  <section class="about-text">
+    <p>I'm a Developer from Dubai working in fullstack development and Software Development. I enjoy turning complex problems into simple, beautiful and intuitive designs.</p>
+    <p>My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I am a passionate Software Engineer currently working at FACTS Company, Dubai, where I focus on ERP development and implementation using MSSQL, T-SQL, API integration, and SQL.</p>
+  </section>
+  <section>
+    <h3 class="h3">What i'm doing</h3>
+    <ul class="grid2 stag">
+      <li class="item svc tilt"><div class="ph">✦<img src="./assets/images/icon-design.svg" alt="design icon" width="40"></div><div><h4>Web design</h4><p>The most modern and high-quality design made at a professional level.</p></div></li>
+      <li class="item svc tilt"><div class="ph">&lt;/&gt;<img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40"></div><div><h4>Web development</h4><p>High-quality development of sites at the professional level.</p></div></li>
+      <li class="item svc tilt"><div class="ph">▤<img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40"></div><div><h4>MS SQL</h4><p>Proficient in MS SQL for developing backend application and integration using API.</p></div></li>
+      <li class="item svc tilt"><div class="ph">◉<img src="./assets/images/icon-photo.svg" alt="camera icon" width="40"></div><div><h4>Photography</h4><p>I make high-quality photos of any category at a professional level.</p></div></li>
+    </ul>
+  </section>
+  <section>
+    <h3 class="h3">Testimonials</h3>
+    <ul class="tlist">
+      <li class="item" data-t data-d="14 June, 2024"><div class="tav"><span>SK</span><img src="./assets/images/avatar-1.png" alt="Suji Kumar" width="60" onerror="this.remove()"></div><h4 class="tn">Suji Kumar</h4><div class="ttxt"><p>Anish was hired to create a corporate identity. We were very pleased with the work done. He has a lot of experience and is very concerned about the needs of client.</p></div></li>
+      <li class="item" data-t data-d="14 June, 2024"><div class="tav"><span>AM</span><img src="./assets/images/avatar-2.png" alt="Akhila Manu" width="60" onerror="this.remove()"></div><h4 class="tn">Akhila Manu</h4><div class="ttxt"><p>Anish's ability to grasp complex concepts and apply them effectively is remarkable. His contributions during his internship at Oasis Infobyte, particularly in web development, showcased his technical proficiency and dedication. Anish is a true asset to any team.</p></div></li>
+      <li class="item" data-t data-d="14 June, 2024"><div class="tav"><span>SK</span><img src="./assets/images/avatar-3.png" alt="Shammy Kumar" width="60" onerror="this.remove()"></div><h4 class="tn">Shammy Kumar</h4><div class="ttxt"><p>Anish Sunil has demonstrated exceptional talent and commitment in all his projects. His strong educational background, combined with practical experience, makes him a well-rounded professional. Anish is always eager to learn and excel.</p></div></li>
+      <li class="item" data-t data-d="14 June, 2024"><div class="tav"><span>SS</span><img src="./assets/images/avatar-4.png" alt="Henry william" width="60" onerror="this.remove()"></div><h4 class="tn">Sunish Sunil</h4><div class="ttxt"><p>Anish is a highly skilled and dedicated individual. His proficiency in software development and web technologies like HTML, CSS, and JavaScript is impressive. Anish consistently delivers high-quality work and brings a positive attitude to the team.</p></div></li>
+    </ul>
+  </section>
+  <div class="modal" id="modal"><div class="ov" data-close></div>
+    <section class="mbox card">
+      <button class="x" data-close aria-label="Close"><svg class="i"><use href="#x"/></svg></button>
+      <div class="tav mav"><span id="mi">DL</span><img id="mimg" src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" onerror="this.style.display='none'"></div>
+      <h4 class="h3" id="mt" style="margin:0">Daniel lewis</h4><time datetime="2024-06-14" id="md">14 June, 2024</time>
+      <div id="mx"><p>Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.</p></div>
+    </section>
+  </div>
+</article>
 
+<article class="card" data-page="resume">
+  <header><h2 class="t">Resume</h2></header>
+  <section>
+    <div class="tl-head"><div class="ib"><svg class="i"><use href="#book"/></svg></div><h3 class="h3">Education</h3></div>
+    <ol class="tl">
+      <li><h4>Amrita Viswa Vidyapeetham, Kochi Campus</h4><span>2022 — 2024</span><p>Done my <b>Masters of Computer Application </b> from Amrita Viswa Vidyapeetam with a CGPA of 7.69/10</p></li>
+      <li><h4>University of Kerala, IHRD College of Applied Science</h4><span>2019 — 2022</span><p>Done my <b>Bachelors of Computer Application </b> from University of kerala with a CGPA of 7.5/10</p></li>
+      <li><h4>Kerala State Board Of Secondary Education (STD XII)</h4><span>2017 — 2019</span><p>Done my <b>Higher Secondary Education</b> from Kerala State syllabus with a percenatge of 82%</p></li>
+      <li><h4>Indian Certificate of Secondary Education Examinations (STD X)</h4><span>2017</span><p>Done my <b>Secondary Education</b> from ICSE Syllabus with a percentage of 78%</p></li>
+    </ol>
+  </section>
+  <section>
+    <div class="tl-head"><div class="ib"><svg class="i"><use href="#book"/></svg></div><h3 class="h3">Experience</h3></div>
+    <ol class="tl"><li><h4>Software Developer</h4><span>10/09/2025 - Present</span><p>Developing user friendly, customized ERP software at <b>FACTS</b> from September 10th 2025, I gained valuable experience in software development, sql, api integration and machine research modeling. Skills gained: SQL, Fullstack development, JavaScript, Python, TSQL, React, Angular.</p></li></ol>
+  </section>
+  <section>
+    <h3 class="h3">My skills</h3>
+    <ul class="skills card">
+      <li class="sk"><div><h5>Angular</h5><data value="56">56%</data></div><div class="bar"><div class="fill" data-w="56"></div></div></li>
+      <li class="sk"><div><h5>JavaScript</h5><data value="50">50%</data></div><div class="bar"><div class="fill" data-w="50"></div></div></li>
+      <li class="sk"><div><h5>MS SQL</h5><data value="80">80%</data></div><div class="bar"><div class="fill" data-w="80"></div></div></li>
+      <li class="sk"><div><h5>Python</h5><data value="85">85%</data></div><div class="bar"><div class="fill" data-w="85"></div></div></li>
+      <li class="sk"><div><h5>AI Integration</h5><data value="60">60%</data></div><div class="bar"><div class="fill" data-w="60"></div></div></li>
+    </ul>
+  </section>
+</article>
 
+<article class="card" data-page="portfolio">
+  <header><h2 class="t">Portfolio</h2></header>
+  <section>
+    <ul class="filters"><li><button class="active" data-f>All</button></li><li><button data-f>Web design</button></li><li><button data-f>Web development</button></li></ul>
+    <div class="sel"><button data-select><span id="sv">Select category</span><svg class="i"><use href="#chev"/></svg></button>
+      <ul id="sl"><li><button data-si>All</button></li><li><button data-si>Web design</button></li><li><button data-si>Web development</button></li></ul></div>
+    <ul class="plist">
+      <li data-cat="web design"><a href="#"><figure class="img tilt">AG<div class="eye"><svg class="i"><use href="#eye"/></svg></div><img src="./assets/images/project-1.png" alt="Amigos GYM" loading="lazy" onerror="this.remove()"></figure><h3 class="pt">Amigos GYM</h3><p class="pc">Web design</p></a></li>
+      <li data-cat="web development"><a href="#"><figure class="img tilt">FU<div class="eye"><svg class="i"><use href="#eye"/></svg></div><img src="./assets/images/project-2.png" alt="Flavours Unleashed" loading="lazy" onerror="this.remove()"></figure><h3 class="pt">Flavours Unleashed</h3><p class="pc">Web development</p></a></li>
+      <li data-cat="web design"><a href="#"><figure class="img tilt">EZ<div class="eye"><svg class="i"><use href="#eye"/></svg></div><img src="./assets/images/project-3.png" alt="EEZY" loading="lazy" onerror="this.remove()"></figure><h3 class="pt">EEZY</h3><p class="pc">Web design</p></a></li>
+    </ul>
+  </section>
+</article>
 
+<article class="card" data-page="blog">
+  <header><h2 class="t">Blog</h2></header>
+  <ul class="blist">
+    <li class="item"><a href="https://careerfoundry.com/en/blog/web-development/how-i-found-my-way-into-coding/"><figure class="img">B1<img src="./assets/images/blog-1.jpg" alt="Terver Aosu" loading="lazy" onerror="this.remove()"></figure><div class="bc"><div class="bm"><p class="cat">Design</p><span class="dot"></span><time datetime="2022-02-23">May 14, 2024</time></div><h3>Terver Aosu</h3><p>Meet the mentors, How I found my way into coding</p></div></a></li>
+    <li class="item"><a href="https://www.designity.com/blog/the-best-fonts-for-designers#:~:text=Manrope%20%E2%80%94%20Simple%20and%20readable.,matter%20the%20distance%20or%20size."><figure class="img">B2<img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy" onerror="this.remove()"></figure><div class="bc"><div class="bm"><p class="cat">Design</p><span class="dot"></span><time datetime="2022-02-23">Jan 5, 2024</time></div><h3>Best fonts every designer</h3><p>In the world of design, every line and curve plays a crucial role in the look and feel of your final result and that extends to the fonts you use.</p></div></a></li>
+    <li class="item"><a href="https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe"><figure class="img">B3<img src="./assets/images/blog-3.jpg" alt="Angular v18" loading="lazy" onerror="this.remove()"></figure><div class="bc"><div class="bm"><p class="cat">Development</p><span class="dot"></span><time datetime="2022-02-23">May 23, 2024</time></div><h3>Angular V18 is now available!</h3><p>Today we are excited to share the next milestone in the evolution of Angular! Over the past three releases we’ve introduced a lot of new features and improvements.</p></div></a></li>
+    <li class="item"><a href="https://openai.com/index/hello-gpt-4o/"><figure class="img">B4<img src="./assets/images/blog-4.jpg" alt="Hello GPT-4o" loading="lazy" onerror="this.remove()"></figure><div class="bc"><div class="bm"><p class="cat">AI</p><span class="dot"></span><time datetime="2024-05-13">May 13, 2024</time></div><h3>Hello GPT-4o</h3><p>We’re announcing GPT-4o, our new flagship model that can reason across audio, vision, and text in real time.</p></div></a></li>
+    <li class="item"><a href="https://www.uipath.com/blog/ai/understanding-context-grounding"><figure class="img">B5<img src="./assets/images/blog-5.jpg" alt="Why context is the key to better generative AI" loading="lazy" onerror="this.remove()"></figure><div class="bc"><div class="bm"><p class="cat">AI</p><span class="dot"></span><time datetime="2024-05-6">May 6, 2024</time></div><h3>Why context is the key to better generative AI</h3><p>GenAI tools are powered by foundational AI models like large language models (LLMs).</p></div></a></li>
+    <li class="item"><a href="https://www.artificial-intelligence.blog/ai-news/e-commerce-video-mockups-with-hedra"><figure class="img">B6<img src="./assets/images/blog-6.jpg" alt="E-Commerce Video Mockups with Hedra" loading="lazy" onerror="this.remove()"></figure><div class="bc"><div class="bm"><p class="cat">AI</p><span class="dot"></span><time datetime="2022-02-23">Feb 19, 2024</time></div><h3>E-Commerce Video Mockups with Hedra</h3><p>In the ever-evolving landscape of e-commerce, staying ahead of the curve often means adopting the latest technologies to engage and attract customers. One such innovation making waves in the industry is the use of generative video AI models.</p></div></a></li>
+  </ul>
+</article>
 
+<article class="card" data-page="contact">
+  <header><h2 class="t">Contact</h2></header>
+  <section class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14454.551470315414!2d55.2707826!3d25.2048493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f434c1c5b2e6b%3A0x9c4c8f4f1f4cc7d1!2sDubai%2C%20United%20Arab%20Emirates!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" loading="lazy" style="border:0" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></section>
+  <section>
+    <h3 class="h3">Contact Form</h3>
+    <form action="mailto:anishsunil2001@gmail.com" method="post" enctype="text/plain" class="form">
+      <div class="iw"><input type="text" name="fullname" class="fi" placeholder="Full name" required><input type="email" name="email" class="fi" placeholder="Email address" required></div>
+      <textarea name="message" class="fi" placeholder="Your Message" required></textarea>
+      <button class="fb" type="submit"><svg class="i"><use href="#send"/></svg><span>Send Message</span></button>
+    </form>
+  </section>
+</article>
+</div>
+</main>
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const glow=$('#glow');
+addEventListener('pointermove',e=>{glow.style.setProperty('--x',e.clientX+'px');glow.style.setProperty('--y',e.clientY+'px')});
+// sidebar toggle
+$('[data-sidebar-btn]').onclick=()=>$('[data-more]').classList.toggle('on');
+// typed title
+(()=>{const el=$('#typed'),t=el.dataset.text;let i=0;el.textContent='';(function n(){el.textContent=t.slice(0,++i);if(i<t.length)setTimeout(n,70)})()})();
+// pages
+const links=$$('[data-nav-link]'),pages=$$('[data-page]');
+function skills(on){$$('.fill').forEach(f=>f.style.width=on?f.dataset.w+'%':'0')}
+links.forEach(b=>b.onclick=()=>{const k=b.textContent.trim().toLowerCase();
+  links.forEach(x=>x.classList.toggle('active',x===b));
+  pages.forEach(p=>{const on=p.dataset.page===k;p.classList.remove('active');if(on){void p.offsetWidth;p.classList.add('active')}});
+  skills(k==='resume');scrollTo({top:0,behavior:'smooth'})});
+// spotlight + tilt
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.item,.tilt');if(!c)return;
+  const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
+  if(c.classList.contains('tilt')){c.style.setProperty('--ry',((x/r.width-.5)*10)+'deg');c.style.setProperty('--rx',((.5-y/r.height)*10)+'deg')}});
+document.addEventListener('pointerout',e=>{const c=e.target.closest&&e.target.closest('.tilt');if(c){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')}});
+// testimonials modal
+const modal=$('#modal');
+$$('[data-t]').forEach(t=>t.onclick=()=>{const im=$('img',t);
+  $('#mt').textContent=$('.tn',t).textContent;$('#mx').innerHTML=$('.ttxt',t).innerHTML;$('#md').textContent=t.dataset.d;
+  $('#mi').textContent=$('span',t).textContent;const mi=$('#mimg');
+  if(im){mi.style.display='';mi.src=im.src;mi.alt=im.alt}else mi.style.display='none';
+  modal.classList.add('on')});
+$$('[data-close]').forEach(x=>x.onclick=()=>modal.classList.remove('on'));
+addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('on')});
+// filter
+const items=$$('.plist li'),fb=$$('[data-f]'),sb=$$('[data-si]'),sl=$('#sl');
+function filt(v){v=v.toLowerCase();items.forEach((li,i)=>{const show=v==='all'||li.dataset.cat===v;li.classList.toggle('hide',!show);if(show){li.style.animation='none';void li.offsetWidth;li.style.animation='pop .5s '+i*.06+'s both'}})}
+fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.classList.toggle('active',x===b));$('#sv').textContent=b.textContent;filt(b.textContent)});
+$('[data-select]').onclick=()=>sl.classList.toggle('on');
+sb.forEach(b=>b.onclick=()=>{$('#sv').textContent=b.textContent;sl.classList.remove('on');fb.forEach(x=>x.classList.toggle('active',x.textContent===b.textContent));filt(b.textContent)});
+</script>
 </body>
-
 </html>
